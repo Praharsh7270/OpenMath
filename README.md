@@ -149,6 +149,73 @@ An example script (`inference.py`) is provided to demonstrate how to:
 Note: Running the script requires downloading the base model from Hugging Face.
 
 ---
+##  Project Structure & Workflow 
+### Repository Structure
+
+OpenMath/
+├── adapter_config.json         #LoRA configuration
+├── adapter_model.safetensors   #Fine-tuned LoRA weights
+├── CONTRIBUTING.md             #Contribution guidelines
+├── inference.md                #Script for step-by-step math inference 
+├── LICENSE                     #Apache 2.0 license
+└── README.md                   #OpenMath project Documentation
+
+--- 
+
+### Key Files Explanation :
+
+`inference.py`
+
+1. This script Loads the base model (Qwen2.5-Math-1.5B)
+2. The Script  Attaches the fine-tuned LoRA adapter
+3. Also it Generates step-by-step reasoning for math problems
+4. This is the main script used to test the fine-tuned model.
+
+
+`adapter_model.safetensors`
+
+1. Contains the trained LoRA adapter weights.
+2. This is not a full model checkpoint.
+
+
+`adapter_config.json`
+
+It helps to Stores the LoRA configuration (rank, alpha, target modules, etc.).
+
+
+`CONTRIBUTING.md`
+
+It Provides guidelines for contributors who want to improve the project.
+
+
+`LICENSE`
+
+Apache 2.0 license defining usage and distribution rights.
+
+--- 
+
+### Current Project Workflow
+
+1. Firstly Download the base model **(Qwen2.5-Math-1.5B)** from Hugging Face.
+2. Load the saved LoRA adapter (adapter_model.safetensors).
+3. Run inference.py.
+4. Provide a math problem using the structured prompt format.
+5. The model generates step-by-step reasoning and a final answer
+
+--- 
+
+### Simplified Workflow Diagram 
+
+```
+Base Model (Qwen2.5-Math-1.5B)
+            +
+LoRA Adapter (Fine-tuned weights)
+            ↓
+      inference.py
+            ↓
+Step-by-step math reasoning output
+```
+---
 
 ## Disclaimer
 OpenMath is an educational/research project.  
